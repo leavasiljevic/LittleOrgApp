@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86341AE4235614A700A5CD5B /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86341AE3235614A700A5CD5B /* TaskCell.swift */; };
+		86341AE8235646EE00A5CD5B /* AddTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86341AE7235646EE00A5CD5B /* AddTaskController.swift */; };
 		863607462350F0DD00D829E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863607452350F0DD00D829E0 /* AppDelegate.swift */; };
 		863607482350F0DD00D829E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863607472350F0DD00D829E0 /* ViewController.swift */; };
 		8636074B2350F0DD00D829E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 863607492350F0DD00D829E0 /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		86341AE3235614A700A5CD5B /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		86341AE7235646EE00A5CD5B /* AddTaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskController.swift; sourceTree = "<group>"; };
 		863607422350F0DD00D829E0 /* LittleOrgApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleOrgApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		863607452350F0DD00D829E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		863607472350F0DD00D829E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,9 +104,11 @@
 				863607452350F0DD00D829E0 /* AppDelegate.swift */,
 				863607472350F0DD00D829E0 /* ViewController.swift */,
 				863607492350F0DD00D829E0 /* Main.storyboard */,
+				86341AE3235614A700A5CD5B /* TaskCell.swift */,
 				8636074C2350F0E100D829E0 /* Assets.xcassets */,
 				8636074E2350F0E100D829E0 /* LaunchScreen.storyboard */,
 				863607512350F0E100D829E0 /* Info.plist */,
+				86341AE7235646EE00A5CD5B /* AddTaskController.swift */,
 			);
 			path = LittleOrgApp;
 			sourceTree = "<group>";
@@ -257,6 +263,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				863607482350F0DD00D829E0 /* ViewController.swift in Sources */,
+				86341AE4235614A700A5CD5B /* TaskCell.swift in Sources */,
+				86341AE8235646EE00A5CD5B /* AddTaskController.swift in Sources */,
 				863607462350F0DD00D829E0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
