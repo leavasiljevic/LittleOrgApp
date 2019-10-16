@@ -15,11 +15,10 @@ protocol AddTask{
 class AddTaskController: UIViewController {
 
     @IBAction func addAction(_ sender: Any) {
-        if taskNameOutlet.text != "" {
+        if taskNameOutlet.text != ""{
             delegate?.addTask(name: taskNameOutlet.text!)
             navigationController?.popViewController(animated: true)
         }
-        
     }
     
     @IBOutlet weak var taskNameOutlet: UITextField!
@@ -29,7 +28,5 @@ class AddTaskController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-
-
 }
+

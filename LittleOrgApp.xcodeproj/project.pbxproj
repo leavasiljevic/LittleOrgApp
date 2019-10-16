@@ -101,14 +101,14 @@
 		863607442350F0DD00D829E0 /* LittleOrgApp */ = {
 			isa = PBXGroup;
 			children = (
-				863607452350F0DD00D829E0 /* AppDelegate.swift */,
 				863607472350F0DD00D829E0 /* ViewController.swift */,
-				863607492350F0DD00D829E0 /* Main.storyboard */,
+				86341AE7235646EE00A5CD5B /* AddTaskController.swift */,
 				86341AE3235614A700A5CD5B /* TaskCell.swift */,
+				863607492350F0DD00D829E0 /* Main.storyboard */,
 				8636074C2350F0E100D829E0 /* Assets.xcassets */,
 				8636074E2350F0E100D829E0 /* LaunchScreen.storyboard */,
+				863607452350F0DD00D829E0 /* AppDelegate.swift */,
 				863607512350F0E100D829E0 /* Info.plist */,
-				86341AE7235646EE00A5CD5B /* AddTaskController.swift */,
 			);
 			path = LittleOrgApp;
 			sourceTree = "<group>";

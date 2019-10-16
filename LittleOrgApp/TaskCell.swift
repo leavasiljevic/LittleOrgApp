@@ -15,14 +15,18 @@ protocol ChangeButton{
 class TaskCell: UITableViewCell {
 
     @IBAction func checkBoxActiun(_ sender: Any) {
-        
+        if tasks![indexPathTaskCell!].statusChecked{
+            delegate?.changeButton(statusChecked: false, index: indexPathTaskCell!)
+        } else {
+            delegate?.changeButton(statusChecked: true, index: indexPathTaskCell!)
+        }
     }
-    
+        
     @IBOutlet weak var checkBoxOutlet: UIButton!
     @IBOutlet weak var taskNameLabel: UILabel!
     
     var delegate: ChangeButton?
-    var indexP: Int?
+    var indexPathTaskCell: Int?
     var tasks: [Task]?
-    
 }
+
