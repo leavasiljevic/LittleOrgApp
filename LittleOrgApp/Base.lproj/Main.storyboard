@@ -44,6 +44,7 @@
                                                     <state key="normal" backgroundImage="checkBoxOUTLINE "/>
                                                     <state key="disabled" backgroundImage="checkBoxOUTLINE "/>
                                                     <state key="selected" backgroundImage="checkBoxFILLED"/>
+                                                    <state key="highlighted" backgroundImage="checkBoxOUTLINE "/>
                                                     <connections>
                                                         <action selector="checkBoxActiun:" destination="Bbd-WZ-BLJ" eventType="touchUpInside" id="auv-i4-QT1"/>
                                                     </connections>

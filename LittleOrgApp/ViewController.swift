@@ -28,7 +28,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         cell.taskNameLabel.text = tasks[indexPath.row].name
         cell.checkBoxOutlet.isSelected = tasks[indexPath.row].statusChecked
-        
+
         cell.delegate = self
         cell.indexPathTaskCell = indexPath.row
         cell.tasks = tasks
