@@ -27,12 +27,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as! TaskCell
         
         cell.taskNameLabel.text = tasks[indexPath.row].name
-
-        if tasks[indexPath.row].statusChecked {
-            cell.checkBoxOutlet.setBackgroundImage(#imageLiteral(resourceName: "checkBoxFILLED "), for: UIControl.State.normal) // trowing error
-        } else {
-            cell.checkBoxOutlet.setBackgroundImage(#imageLiteral(resourceName: "checkBoxOUTLINE "), for: UIControl.State.normal)
-        }
+        cell.checkBoxOutlet.isSelected = tasks[indexPath.row].statusChecked
         
         cell.delegate = self
         cell.indexPathTaskCell = indexPath.row
