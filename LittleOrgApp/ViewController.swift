@@ -11,12 +11,12 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddTask, ChangeButton{
     
 
-    var tasks: [Task] = []
+    var tasks: Organization
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
-        tasks.append(Task(name: "Test object 1"))
+        tasks.addTask(name: "Test object 1")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,17 +27,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as! TaskCell
         
         cell.taskNameLabel.text = tasks[indexPath.row].name
-
-        if tasks[indexPath.row].statusChecked {
-            cell.checkBoxOutlet.setBackgroundImage(#imageLiteral(resourceName: "checkBoxFILLED "), for: UIControl.State.normal) // trowing error
-        } else {
-            cell.checkBoxOutlet.setBackgroundImage(#imageLiteral(resourceName: "checkBoxOUTLINE "), for: UIControl.State.normal)
-        }
+        cell.checkBoxOutlet.isSelected = tasks[indexPath.row].statusChecked
         
         cell.delegate = self
         cell.indexPathTaskCell = indexPath.row
         cell.tasks = tasks
-        
         
         return cell
     }
@@ -49,7 +43,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func addTask(name: String) {
-        tasks.append(Task(name: name))
+        tasks.addTask(name: name)
         tableView.reloadData()
     }
     
@@ -60,13 +54,4 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 }
 
 
-class Task{
-    var name = ""
-    var statusChecked = false // checked = false
-    
-    convenience init(name: String){
-        self.init()
-        self.name = name
-    }
-}
 

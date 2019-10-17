@@ -16,6 +16,8 @@
 		863607502350F0E100D829E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8636074E2350F0E100D829E0 /* LaunchScreen.storyboard */; };
 		8636075B2350F0E100D829E0 /* LittleOrgAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8636075A2350F0E100D829E0 /* LittleOrgAppTests.swift */; };
 		863607662350F0E100D829E0 /* LittleOrgAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863607652350F0E100D829E0 /* LittleOrgAppUITests.swift */; };
+		863773E72358B1B70095A8F1 /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863773E62358B1B70095A8F1 /* Organization.swift */; };
+		863773E92358B39C0095A8F1 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863773E82358B39C0095A8F1 /* Task.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		863607612350F0E100D829E0 /* LittleOrgAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LittleOrgAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		863607652350F0E100D829E0 /* LittleOrgAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LittleOrgAppUITests.swift; sourceTree = "<group>"; };
 		863607672350F0E100D829E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		863773E62358B1B70095A8F1 /* Organization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organization.swift; sourceTree = "<group>"; };
+		863773E82358B39C0095A8F1 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,8 @@
 		863607442350F0DD00D829E0 /* LittleOrgApp */ = {
 			isa = PBXGroup;
 			children = (
+				863773E62358B1B70095A8F1 /* Organization.swift */,
+				863773E82358B39C0095A8F1 /* Task.swift */,
 				863607472350F0DD00D829E0 /* ViewController.swift */,
 				86341AE7235646EE00A5CD5B /* AddTaskController.swift */,
 				86341AE3235614A700A5CD5B /* TaskCell.swift */,
@@ -265,6 +271,8 @@
 				863607482350F0DD00D829E0 /* ViewController.swift in Sources */,
 				86341AE4235614A700A5CD5B /* TaskCell.swift in Sources */,
 				86341AE8235646EE00A5CD5B /* AddTaskController.swift in Sources */,
+				863773E72358B1B70095A8F1 /* Organization.swift in Sources */,
+				863773E92358B39C0095A8F1 /* Task.swift in Sources */,
 				863607462350F0DD00D829E0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
