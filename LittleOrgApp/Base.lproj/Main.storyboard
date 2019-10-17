@@ -35,14 +35,16 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywP-oa-W4E">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywP-oa-W4E">
                                                     <rect key="frame" x="20" y="9.5" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="0IA-gX-fPk"/>
                                                         <constraint firstAttribute="height" constant="25" id="ciR-ru-puw"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button" backgroundImage="checkBoxOUTLINE "/>
+                                                    <state key="normal" backgroundImage="checkBoxOUTLINE "/>
+                                                    <state key="disabled" backgroundImage="checkBoxOUTLINE "/>
                                                     <state key="selected" backgroundImage="checkBoxFILLED"/>
+                                                    <state key="highlighted" backgroundImage="checkBoxOUTLINE "/>
                                                     <connections>
                                                         <action selector="checkBoxActiun:" destination="Bbd-WZ-BLJ" eventType="touchUpInside" id="auv-i4-QT1"/>
                                                     </connections>
