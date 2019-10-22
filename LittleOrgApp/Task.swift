@@ -8,7 +8,11 @@
 
 import Foundation
 
-struct Task{
+class Task {
     var name = ""
     var statusChecked = false // checked = false
+    
+    init(name: String){
+        self.name = name
+    }
 }

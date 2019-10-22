@@ -9,17 +9,13 @@
 import UIKit
 
 protocol ChangeButton{
-    func changeButton(statusChecked: Bool, index: Int)
+    func changeButton(indexPath: Int)
 }
 
 class TaskCell: UITableViewCell {
 
     @IBAction func checkBoxActiun(_ sender: Any) {
-        if tasks![indexPathTaskCell!].statusChecked{
-            delegate?.changeButton(statusChecked: false, index: indexPathTaskCell!)
-        } else {
-            delegate?.changeButton(statusChecked: true, index: indexPathTaskCell!)
-        }
+        
     }
         
     @IBOutlet weak var checkBoxOutlet: UIButton!
@@ -27,11 +23,19 @@ class TaskCell: UITableViewCell {
     
     var delegate: ChangeButton?
     var indexPathTaskCell: Int?
-    var tasks: [Task]?
+ //   var tasks: Organization?
+//    var tasks: [Tasks]?
+    
+    
     
     override func awakeFromNib() {
+        super.awakeFromNib()
         checkBoxOutlet.setBackgroundImage(UIImage(named: "checkBoxFILLED"), for: UIControl.State.selected)
         checkBoxOutlet.setBackgroundImage(UIImage(named: "checkBoxOUTLINE"), for: UIControl.State.normal)
     }
 }
+
+
+    
+  
 

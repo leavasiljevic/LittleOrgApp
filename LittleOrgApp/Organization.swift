@@ -10,21 +10,19 @@ import Foundation
 
 class Organization
 {
-    var tasks = [Task]()
-    
-    func getTask(at index: Int){
-        
-    }
+    private(set) var tasksListM: [Task] = []
     
     func addTask(name: String){
-        
-        
-        tasks.name
-        .name = name;
+        let task = Task(name: name)
+        tasksListM.append(task)
     }
     
+    func removeTaskFromList(index: Int, name: String){
+    }
     
-    
-    
+    init(){
+        let task = Task(name: "")
+        tasksListM.append(task)
+    }
     
 }
