@@ -33,6 +33,7 @@ class TaskCell: UITableViewCell {
         checkBoxOutlet.setBackgroundImage(UIImage(named: "checkBoxFILLED"), for: UIControl.State.selected)
         checkBoxOutlet.setBackgroundImage(UIImage(named: "checkBoxOUTLINE"), for: UIControl.State.normal)
     }
+    
 }
 
 
