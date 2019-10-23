@@ -23,9 +23,8 @@ class TaskCell: UITableViewCell {
     
     var delegate: ChangeButton?
     var indexPathTaskCell: Int?
- //   var tasks: Organization?
-//    var tasks: [Tasks]?
-    
+    var tasks: [Task]?
+    // kako da resim ovo??? treba ga iuzbaciti...
     
     
     override func awakeFromNib() {

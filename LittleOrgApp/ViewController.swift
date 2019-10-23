@@ -23,15 +23,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as! TaskCell
         
-        cell.taskNameLabel.text = tasks[indexPath.row].name
-        cell.checkBoxOutlet.isSelected = tasks[indexPath.row].statusChecked
+        cell.taskNameLabel.text = org.tasksListM[indexPath.row].name
+        cell.checkBoxOutlet.isSelected = org.tasksListM[indexPath.row].statusChecked
 
-            cell.taskNameLabel.text = org.tasksListM[indexPath.row].name
-            cell.checkBoxOutlet.isSelected = org.tasksListM[indexPath.row].statusChecked
+        cell.taskNameLabel.text = org.tasksListM[indexPath.row].name
+        cell.checkBoxOutlet.isSelected = org.tasksListM[indexPath.row].statusChecked
          
-            cell.delegate = self
-            cell.indexPathTaskCell = indexPath.row
-       //   cell.tasks =  org.tasksListM
+        cell.delegate = self
+        cell.indexPathTaskCell = indexPath.row
+        cell.tasks = org.tasksListM
+
         
         return cell
     }
