@@ -30,8 +30,8 @@ class TaskCell: UITableViewCell {
     var tasks: [Task]?
     
     override func awakeFromNib() {
-        checkBoxOutlet.setBackgroundImage(UIImage(named: "checkBoxFILLED"), for: UIControl.State.selected)
-        checkBoxOutlet.setBackgroundImage(UIImage(named: "checkBoxOUTLINE"), for: UIControl.State.normal)
+        checkBoxOutlet.setImage(UIImage(named: "checkBoxFILLED"), for: .selected)
+        checkBoxOutlet.setImage(UIImage(named: "checkBoxOUTLINE"), for: .normal)
     }
     
 }
