@@ -8,29 +8,60 @@
 
 import UIKit
 
-protocol ChangeButton{
-    func changeButton(indexPath: Int)
+protocol TaskCellDelegate: class {
+    func checkBoxTapped(for taskCell: TaskCell)
 }
 
 class TaskCell: UITableViewCell {
-
-    @IBAction func checkBoxActiun(_ sender: Any) {
+    
         
+    @IBOutlet weak private var checkBoxOutlet: UIButton!
+    @IBOutlet weak private var taskNameLabel: UILabel!
+    
+
+    @IBAction private func checkBoxActiun(_ sender: Any) {
+        delegate?.checkBoxTapped(for: self)
+    }
+
+    weak var delegate: TaskCellDelegate?
+
+    var taskName: String {
+        get {
+            return taskNameLabel?.text ?? ""
+        }
+        
+        set {
+            taskNameLabel?.text = newValue
+        }
     }
         
-    @IBOutlet weak var checkBoxOutlet: UIButton!
-    @IBOutlet weak var taskNameLabel: UILabel!
+    var statusChecked: Bool {
+        get {
+            return checkBoxOutlet.isSelected
+        }
+        
+        set {
+            checkBoxOutlet?.isSelected = newValue
+        }
+    }
     
-    var delegate: ChangeButton?
-    var indexPathTaskCell: Int?
-    var tasks: [Task]?
-    // kako da resim ovo??? treba ga iuzbaciti...
+   var taskId = 0
     
+//    var taskId: Int {
+//        get {
+//            return taskId = 0
+//        }
+//
+//        set {
+//            taskId = newValue
+//        }
+//    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        checkBoxOutlet.setBackgroundImage(UIImage(named: "checkBoxFILLED"), for: UIControl.State.selected)
-        checkBoxOutlet.setBackgroundImage(UIImage(named: "checkBoxOUTLINE"), for: UIControl.State.normal)
+        
+        checkBoxOutlet.setImage(UIImage(named: "checkBoxFILLED"), for: .selected)
+        checkBoxOutlet.setImage(UIImage(named: "checkBoxOUTLINE"), for: .normal)
     }
     
 }

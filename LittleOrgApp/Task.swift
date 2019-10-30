@@ -9,10 +9,12 @@
 import Foundation
 
 class Task {
+    var taskId = 0
     var name = ""
     var statusChecked = false // checked = false
     
-    init(name: String){
+    init(name: String,taskIdCounter: Int){
         self.name = name
+        self.taskId = taskIdCounter
     }
 }

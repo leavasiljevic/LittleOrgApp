@@ -11,18 +11,29 @@ import Foundation
 class Organization
 {
     private(set) var tasksListM: [Task] = []
+    var taskIdCounter = 0
     
     func addTask(name: String){
-        let task = Task(name: name)
+        taskIdCounter += 1
+        let task = Task(name: name, taskIdCounter: taskIdCounter)
         tasksListM.append(task)
+        print("taskId from Organization =  \(taskIdCounter)")
+        print("task name from Organization =  \(task.name)")
+        print("task statusCh from Organization =  \(task.statusChecked)")
+        print("task taskId from Organization =  \(task.taskId)")
     }
     
-    func removeTaskFromList(index: Int, name: String){
+    
+    func removeTaskFromList(index: Int){
+        tasksListM.remove(at: index)
     }
     
-    init(){
-        let task = Task(name: "")
-        tasksListM.append(task)
+    func changeCheckTaskFromList(index: Int){
+        //tasksListM.remove(at: index)
+        tasksListM[index].statusChecked = true
+    }
+        
+    init() {
     }
     
 }
