@@ -20,6 +20,8 @@ class TaskCell: UITableViewCell {
     
 
     @IBAction private func checkBoxActiun(_ sender: Any) {
+        // guard let button = sender as? UIButton else { return }
+        guard sender is UIButton else { return }
         delegate?.checkBoxTapped(for: self)
     }
 
@@ -45,17 +47,7 @@ class TaskCell: UITableViewCell {
         }
     }
     
-   var taskId = 0
-    
-//    var taskId: Int {
-//        get {
-//            return taskId = 0
-//        }
-//
-//        set {
-//            taskId = newValue
-//        }
-//    }
+    var taskId: Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()

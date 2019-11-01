@@ -11,9 +11,9 @@ import Foundation
 class Organization
 {
     private(set) var tasksListM: [Task] = []
-    var taskIdCounter = 0
+    private var taskIdCounter = 0
     
-    func addTask(name: String){
+    func addTask(name: String) {
         taskIdCounter += 1
         let task = Task(name: name, taskIdCounter: taskIdCounter)
         tasksListM.append(task)
@@ -23,17 +23,37 @@ class Organization
         print("task taskId from Organization =  \(task.taskId)")
     }
     
+    func getTask(withID id: Int) -> Task? {
+//        return tasksListM.first(where: { $0.taskId == id})
+        
+        for posibleTask in tasksListM {
+            if posibleTask.taskId == id {
+                return posibleTask
+            }
+        }
+        
+        return nil
+    }
     
-    func removeTaskFromList(index: Int){
+    func setStatusChecked(to status: Bool, forID id: Int) -> Bool {
+        guard let task = getTask(withID: id) else { return false }
+        
+        task.statusChecked = status
+        
+        return true
+    }
+    
+    // Returns a new status checked value.
+    func toggleStatusChecked(forID id: Int) -> Bool {
+        let task = getTask(withID: id)!
+        task.statusChecked.toggle()
+        
+        return task.statusChecked
+    }
+    
+    func removeTaskFromList(index: Int) {
         tasksListM.remove(at: index)
     }
-    
-    func changeCheckTaskFromList(index: Int){
-        //tasksListM.remove(at: index)
-        tasksListM[index].statusChecked = true
-    }
         
-    init() {
-    }
-    
+    init() { }    
 }

@@ -63,13 +63,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     func checkBoxTapped(for taskCell: TaskCell) {
-//        if taskCell.state = Default{
-//            taskCell.state = Selected
-//            org.tasksListM[IndexPath.row].statusChecked = true
-//        } else {
-//            taskCell.state = Default
-//            org.tasksListM[IndexPath.row].statusChecked = true
-//        }
+        taskCell.statusChecked = org.toggleStatusChecked(forID: taskCell.taskId!)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
