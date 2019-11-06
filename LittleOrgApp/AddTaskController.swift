@@ -16,6 +16,10 @@ class AddTaskController: UIViewController {
 
     @IBAction func addAction(_ sender: Any) {
         if taskNameOutlet.text != ""{
+            
+            //adding for core data
+            
+            //old code that is working
             delegate?.addTask(name: taskNameOutlet.text!)
             navigationController?.popViewController(animated: true)
         }

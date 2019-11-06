@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86058238237312A400AF7163 /* LittleOrgAppDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 86058236237312A400AF7163 /* LittleOrgAppDataModel.xcdatamodeld */; };
 		86341AE4235614A700A5CD5B /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86341AE3235614A700A5CD5B /* TaskCell.swift */; };
 		86341AE8235646EE00A5CD5B /* AddTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86341AE7235646EE00A5CD5B /* AddTaskController.swift */; };
 		863607462350F0DD00D829E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863607452350F0DD00D829E0 /* AppDelegate.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		86058237237312A400AF7163 /* LittleOrgAppDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LittleOrgAppDataModel.xcdatamodel; sourceTree = "<group>"; };
 		86341AE3235614A700A5CD5B /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		86341AE7235646EE00A5CD5B /* AddTaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskController.swift; sourceTree = "<group>"; };
 		863607422350F0DD00D829E0 /* LittleOrgApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleOrgApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,14 +103,17 @@
 		863607442350F0DD00D829E0 /* LittleOrgApp */ = {
 			isa = PBXGroup;
 			children = (
-				863607472350F0DD00D829E0 /* ViewController.swift */,
+				863607452350F0DD00D829E0 /* AppDelegate.swift */,
+				863773E82358B39C0095A8F1 /* Task.swift */,
+				863773E62358B1B70095A8F1 /* Organization.swift */,
 				86341AE7235646EE00A5CD5B /* AddTaskController.swift */,
 				86341AE3235614A700A5CD5B /* TaskCell.swift */,
-				863607492350F0DD00D829E0 /* Main.storyboard */,
+				863607472350F0DD00D829E0 /* ViewController.swift */,
 				8636074C2350F0E100D829E0 /* Assets.xcassets */,
-				8636074E2350F0E100D829E0 /* LaunchScreen.storyboard */,
-				863607452350F0DD00D829E0 /* AppDelegate.swift */,
+				863607492350F0DD00D829E0 /* Main.storyboard */,
 				863607512350F0E100D829E0 /* Info.plist */,
+				8636074E2350F0E100D829E0 /* LaunchScreen.storyboard */,
+				86058236237312A400AF7163 /* LittleOrgAppDataModel.xcdatamodeld */,
 			);
 			path = LittleOrgApp;
 			sourceTree = "<group>";
@@ -265,6 +270,9 @@
 				863607482350F0DD00D829E0 /* ViewController.swift in Sources */,
 				86341AE4235614A700A5CD5B /* TaskCell.swift in Sources */,
 				86341AE8235646EE00A5CD5B /* AddTaskController.swift in Sources */,
+				863773E72358B1B70095A8F1 /* Organization.swift in Sources */,
+				863773E92358B39C0095A8F1 /* Task.swift in Sources */,
+				86058238237312A400AF7163 /* LittleOrgAppDataModel.xcdatamodeld in Sources */,
 				863607462350F0DD00D829E0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -594,6 +602,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		86058236237312A400AF7163 /* LittleOrgAppDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				86058237237312A400AF7163 /* LittleOrgAppDataModel.xcdatamodel */,
+			);
+			currentVersion = 86058237237312A400AF7163 /* LittleOrgAppDataModel.xcdatamodel */;
+			path = LittleOrgAppDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8636073A2350F0DD00D829E0 /* Project object */;
 }
