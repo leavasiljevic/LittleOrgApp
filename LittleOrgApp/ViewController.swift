@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     var org = Organization()
+    var managedObjectContext: NSManagedObjectContext!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return org.tasksListM.count
@@ -56,7 +57,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         org.addTask(name: "Test object 2" )
         org.addTask(name: "Test object 3" )
         
-        initializeCoreDataStack()
+        managedObjectContext = CoreDataManager.shared.managedObjectContext
+        //populateTaskM()
     }
 
     func addTask(name: String) {
@@ -75,37 +77,50 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-    var managedObjectContext: NSManagedObjectContext!
     
-    func initializeCoreDataStack() {
-        guard let modelURL = Bundle.main.url(forResource: "LittleOrgAppModel", withExtension: "momd")
-             else {
-             fatalError("GroceryDataModel not found")
-         }
-                 
-         guard let manageObjectModel = NSManagedObjectModel(contentsOf: modelURL)
-             else {
-             fatalError("Unabe to initialize ManageObjectModel")
-         }
-         
-         let persistentStoreCoordinator = NSPersistentStoreCoordinator (managedObjectModel: manageObjectModel)
-         
-         let fileManager = FileManager()
-         
-         guard let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else{
-             fatalError("Unabe to get documents URL")
-         }
-         
-         let storeURL = documentsURL.appendingPathComponent ("LittleOrgApp.sqlite")
-         
-         print(storeURL)
-         
-        try! persistentStoreCoordinator.addPersistentStore(ofType:NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
-         
-         let type = NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType
-         self.managedObjectContext = NSManagedObjectContext(concurrencyType: type)
-         self.managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
+    var taskMDataSource: TaskMDataSource!
+    var taskMDataProvider: TaskMDataProvider!
+
+    
+    private func populateShoppingList(){
+        
+        // initializing shopping ShoppingListDataProvider
+        self.taskMDataProvider = TaskMDataProvider(managedObjectContext: self.managedObjectContext)
+        
+        // initializing shopping ShoppingListDataSource
+        self.taskMDataSource = TaskMDataSource(cellIdentifier: "ShoppingListTableViewCell", tableView: self.tableView, shoppingListDataProvider: self.taskMDataProvider)
+        
+        //assigning it to a shoppingListDataSource.
+        self.tableView.dataSource = taskMDataSource
     }
+    
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 44
+//    }
+//
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//
+//        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 44))
+//        headerView.backgroundColor = UIColor.lightGray
+//
+//        let textField = UITextField(frame: headerView.frame)
+//        textField.placeholder = "Enter shopping list"
+//        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+//        textField.leftViewMode = .always
+//        textField.delegate = self
+//
+//        headerView.addSubview(textField)
+//
+//        return headerView
+//    }
+//
+
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    
 }
 
 

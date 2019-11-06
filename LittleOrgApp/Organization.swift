@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class Organization
 {
@@ -15,12 +16,15 @@ class Organization
     
     func addTask(name: String) {
         taskIdCounter += 1
+        
         let task = Task(name: name, taskIdCounter: taskIdCounter)
         tasksListM.append(task)
+        
+        //let taskM = NSEntityDescription.insertNewObject(forEntityName: "TaskM", into: <#T##NSManagedObjectContext#>)
+        
         print("taskId from Organization =  \(taskIdCounter)")
         print("task name from Organization =  \(task.name)")
         print("task statusCh from Organization =  \(task.statusChecked)")
-        print("task taskId from Organization =  \(task.taskId)")
     }
     
     func getTask(withID id: Int) -> Task? {

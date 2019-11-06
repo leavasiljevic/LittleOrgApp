@@ -12,10 +12,17 @@ protocol AddTask{
     func addTask(name: String)
 }
 
-class AddTaskController: UIViewController {
+class AddTaskController: UIViewController, UITextFieldDelegate {
 
     @IBAction func addAction(_ sender: Any) {
         if taskNameOutlet.text != ""{
+            
+            let taskM = NSEntityDescription.insertNewObject(forEntityName: "TaskM", into: self.managedObjectContext) as! ShoppingList
+            shoppingList.title = textField.text
+              
+            try!  self.managedObjectContext.save()
+            textField.text = ""
+            //textFeald.delegate = self
             delegate?.addTask(name: taskNameOutlet.text!)
             navigationController?.popViewController(animated: true)
         }
@@ -27,6 +34,14 @@ class AddTaskController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
+    
+//
+//        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//
+//
+//            return textField.resignFirstResponder()
+//        }
 }
 
