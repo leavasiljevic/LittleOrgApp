@@ -8,60 +8,69 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddTask, ChangeButton{
-    
 
-    var tasks: [Task] = []
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddTask, TaskCellDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
-    override func viewDidLoad() {
-        tasks.append(Task(name: "Test object 1"))
-    }
+    
+    var org = Organization()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
+        return org.tasksListM.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as! TaskCell
         
-        cell.taskNameLabel.text = tasks[indexPath.row].name
-        cell.checkBoxOutlet.isSelected = tasks[indexPath.row].statusChecked
-
+        cell.taskId = org.tasksListM[indexPath.row].taskId
+        cell.taskName = org.tasksListM[indexPath.row].name
+        cell.statusChecked = org.tasksListM[indexPath.row].statusChecked
         cell.delegate = self
-        cell.indexPathTaskCell = indexPath.row
-        cell.tasks = tasks
-        
-        
+
         return cell
     }
     
+     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+         return true
+     }
+     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            org.removeTaskFromList(index: indexPath.row)
+            
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .left)
+            tableView.endUpdates()
+         }
+     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       // print(self.tableArray[indexPath.row])
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        org.addTask(name: "Test object 1" )
+        org.addTask(name: "Test object 2" )
+        org.addTask(name: "Test object 3" )
+    }
+
+    func addTask(name: String) {
+        org.addTask(name: name)
+        tableView.reloadData()
+    }
+    
+    
+    func checkBoxTapped(for taskCell: TaskCell) {
+        taskCell.statusChecked = org.toggleStatusChecked(forID: taskCell.taskId!)
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! AddTaskController
         vc.delegate = self
     }
-    
-    func addTask(name: String) {
-        tasks.append(Task(name: name))
-        tableView.reloadData()
-    }
-    
-    func changeButton(statusChecked: Bool, index: Int) {
-        tasks[index].statusChecked = statusChecked
-        tableView.reloadData()
-    }
 }
 
 
-class Task{
-    var name = ""
-    var statusChecked = false // checked = false
-    
-    convenience init(name: String){
-        self.init()
-        self.name = name
-    }
-}
 
