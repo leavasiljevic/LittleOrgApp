@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddTask, TaskCellDelegate {
@@ -54,6 +55,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         org.addTask(name: "Test object 1" )
         org.addTask(name: "Test object 2" )
         org.addTask(name: "Test object 3" )
+        
+        initializeCoreDataStack()
     }
 
     func addTask(name: String) {
@@ -69,6 +72,39 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! AddTaskController
         vc.delegate = self
+    }
+    
+    
+    var managedObjectContext: NSManagedObjectContext!
+    
+    func initializeCoreDataStack() {
+        guard let modelURL = Bundle.main.url(forResource: "LittleOrgAppModel", withExtension: "momd")
+             else {
+             fatalError("GroceryDataModel not found")
+         }
+                 
+         guard let manageObjectModel = NSManagedObjectModel(contentsOf: modelURL)
+             else {
+             fatalError("Unabe to initialize ManageObjectModel")
+         }
+         
+         let persistentStoreCoordinator = NSPersistentStoreCoordinator (managedObjectModel: manageObjectModel)
+         
+         let fileManager = FileManager()
+         
+         guard let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else{
+             fatalError("Unabe to get documents URL")
+         }
+         
+         let storeURL = documentsURL.appendingPathComponent ("LittleOrgApp.sqlite")
+         
+         print(storeURL)
+         
+        try! persistentStoreCoordinator.addPersistentStore(ofType:NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
+         
+         let type = NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType
+         self.managedObjectContext = NSManagedObjectContext(concurrencyType: type)
+         self.managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
     }
 }
 
