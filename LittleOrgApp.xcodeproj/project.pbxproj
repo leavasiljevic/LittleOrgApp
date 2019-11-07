@@ -16,6 +16,10 @@
 		863607502350F0E100D829E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8636074E2350F0E100D829E0 /* LaunchScreen.storyboard */; };
 		8636075B2350F0E100D829E0 /* LittleOrgAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8636075A2350F0E100D829E0 /* LittleOrgAppTests.swift */; };
 		863607662350F0E100D829E0 /* LittleOrgAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863607652350F0E100D829E0 /* LittleOrgAppUITests.swift */; };
+		86882F9823748ACF00822547 /* LittleOrgAppModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 86882F9623748ACF00822547 /* LittleOrgAppModel.xcdatamodeld */; };
+		86882F9A23748D1D00822547 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86882F9923748D1D00822547 /* CoreDataManager.swift */; };
+		86882F9E23748F7F00822547 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86882F9D23748F7F00822547 /* Default-568h@2x.png */; };
+		86882FA32374A9A200822547 /* TaskMDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86882FA22374A9A200822547 /* TaskMDataProvider.swift */; };
 		86DA480F23734CB2001005D8 /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DA480E23734CB2001005D8 /* Organization.swift */; };
 		86DA481123734CD1001005D8 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DA481023734CD1001005D8 /* Task.swift */; };
 /* End PBXBuildFile section */
@@ -53,6 +57,10 @@
 		863607612350F0E100D829E0 /* LittleOrgAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LittleOrgAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		863607652350F0E100D829E0 /* LittleOrgAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LittleOrgAppUITests.swift; sourceTree = "<group>"; };
 		863607672350F0E100D829E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86882F9723748ACF00822547 /* LittleOrgAppModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LittleOrgAppModel.xcdatamodel; sourceTree = "<group>"; };
+		86882F9923748D1D00822547 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		86882F9D23748F7F00822547 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		86882FA22374A9A200822547 /* TaskMDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMDataProvider.swift; sourceTree = "<group>"; };
 		86DA480E23734CB2001005D8 /* Organization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organization.swift; sourceTree = "<group>"; };
 		86DA481023734CD1001005D8 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +93,7 @@
 		863607392350F0DD00D829E0 = {
 			isa = PBXGroup;
 			children = (
+				86882F9D23748F7F00822547 /* Default-568h@2x.png */,
 				863607442350F0DD00D829E0 /* LittleOrgApp */,
 				863607592350F0E100D829E0 /* LittleOrgAppTests */,
 				863607642350F0E100D829E0 /* LittleOrgAppUITests */,
@@ -105,16 +114,11 @@
 		863607442350F0DD00D829E0 /* LittleOrgApp */ = {
 			isa = PBXGroup;
 			children = (
-				863607472350F0DD00D829E0 /* ViewController.swift */,
-				86DA480E23734CB2001005D8 /* Organization.swift */,
-				86DA481023734CD1001005D8 /* Task.swift */,
-				86341AE7235646EE00A5CD5B /* AddTaskController.swift */,
-				86341AE3235614A700A5CD5B /* TaskCell.swift */,
-				863607492350F0DD00D829E0 /* Main.storyboard */,
-				8636074C2350F0E100D829E0 /* Assets.xcassets */,
-				8636074E2350F0E100D829E0 /* LaunchScreen.storyboard */,
 				863607452350F0DD00D829E0 /* AppDelegate.swift */,
-				863607512350F0E100D829E0 /* Info.plist */,
+				86882F91237478B100822547 /* Model */,
+				86882F90237478AA00822547 /* ViewController */,
+				86882F8F237478A400822547 /* View */,
+				86882F952374794100822547 /* Support */,
 			);
 			path = LittleOrgApp;
 			sourceTree = "<group>";
@@ -137,6 +141,70 @@
 			path = LittleOrgAppUITests;
 			sourceTree = "<group>";
 		};
+		86882F8F237478A400822547 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				86341AE3235614A700A5CD5B /* TaskCell.swift */,
+				86882F9F237490A100822547 /* Storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		86882F90237478AA00822547 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				86341AE7235646EE00A5CD5B /* AddTaskController.swift */,
+				863607472350F0DD00D829E0 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		86882F91237478B100822547 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				86882F93237478C300822547 /* DB */,
+				86882F92237478B700822547 /* Service */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		86882F92237478B700822547 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				86882FA22374A9A200822547 /* TaskMDataProvider.swift */,
+				86DA480E23734CB2001005D8 /* Organization.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		86882F93237478C300822547 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				86DA481023734CD1001005D8 /* Task.swift */,
+				86882F9623748ACF00822547 /* LittleOrgAppModel.xcdatamodeld */,
+				86882F9923748D1D00822547 /* CoreDataManager.swift */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		86882F952374794100822547 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				8636074C2350F0E100D829E0 /* Assets.xcassets */,
+				863607512350F0E100D829E0 /* Info.plist */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		86882F9F237490A100822547 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				863607492350F0DD00D829E0 /* Main.storyboard */,
+				8636074E2350F0E100D829E0 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,6 +215,8 @@
 				8636073E2350F0DD00D829E0 /* Sources */,
 				8636073F2350F0DD00D829E0 /* Frameworks */,
 				863607402350F0DD00D829E0 /* Resources */,
+				86882FA02374914400822547 /* ShellScript */,
+				86882FA12374917400822547 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -242,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				863607502350F0E100D829E0 /* LaunchScreen.storyboard in Resources */,
+				86882F9E23748F7F00822547 /* Default-568h@2x.png in Resources */,
 				8636074D2350F0E100D829E0 /* Assets.xcassets in Resources */,
 				8636074B2350F0DD00D829E0 /* Main.storyboard in Resources */,
 			);
@@ -263,6 +334,43 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		86882FA02374914400822547 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+		86882FA12374917400822547 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8636073E2350F0DD00D829E0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -271,8 +379,11 @@
 				863607482350F0DD00D829E0 /* ViewController.swift in Sources */,
 				86341AE4235614A700A5CD5B /* TaskCell.swift in Sources */,
 				86341AE8235646EE00A5CD5B /* AddTaskController.swift in Sources */,
+				86882F9823748ACF00822547 /* LittleOrgAppModel.xcdatamodeld in Sources */,
 				86DA480F23734CB2001005D8 /* Organization.swift in Sources */,
 				86DA481123734CD1001005D8 /* Task.swift in Sources */,
+				86882FA32374A9A200822547 /* TaskMDataProvider.swift in Sources */,
+				86882F9A23748D1D00822547 /* CoreDataManager.swift in Sources */,
 				863607462350F0DD00D829E0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,7 +561,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C3BS84WB94;
-				INFOPLIST_FILE = LittleOrgApp/Info.plist;
+				INFOPLIST_FILE = LittleOrgApp/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -468,7 +579,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C3BS84WB94;
-				INFOPLIST_FILE = LittleOrgApp/Info.plist;
+				INFOPLIST_FILE = LittleOrgApp/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -602,6 +713,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		86882F9623748ACF00822547 /* LittleOrgAppModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				86882F9723748ACF00822547 /* LittleOrgAppModel.xcdatamodel */,
+			);
+			currentVersion = 86882F9723748ACF00822547 /* LittleOrgAppModel.xcdatamodel */;
+			path = LittleOrgAppModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8636073A2350F0DD00D829E0 /* Project object */;
 }
