@@ -11,10 +11,10 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddTaskDelegate, TaskCellDelegate {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
     
-    var org = Organization()
+    private let org = Organization()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return org.tasksList.count

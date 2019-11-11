@@ -21,8 +21,10 @@ class TaskMDataProvider : NSObject, NSFetchedResultsControllerDelegate {
     weak var delegate: TaskMDataProviderDelegate!
     var managedObjectContext: NSManagedObjectContext!
     var fetchedResultController: NSFetchedResultsController<TaskM>!
+    
 
     init(managedObjectContext: NSManagedObjectContext? = nil) {
+        
         if let context = managedObjectContext {
             self.managedObjectContext = context
         } else {
@@ -32,12 +34,11 @@ class TaskMDataProvider : NSObject, NSFetchedResultsControllerDelegate {
         let request = NSFetchRequest<TaskM>(entityName: "TaskM")
         request.sortDescriptors = [NSSortDescriptor(key: "taskId", ascending: true)]
         
-        self.fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         
         super.init()
-        self.fetchedResultController.delegate = self
-        try! self.fetchedResultController.performFetch()
-        
+        fetchedResultController.delegate = self
+        try! fetchedResultController.performFetch()
     }
     
     var tasks: [TaskM] {
@@ -48,26 +49,41 @@ class TaskMDataProvider : NSObject, NSFetchedResultsControllerDelegate {
     
     var sections: [NSFetchedResultsSectionInfo]? {
         get {
-            return self.fetchedResultController.sections
+            return fetchedResultController.sections
         }
     }
     
     func delete(taskM: TaskM) {
-        self.managedObjectContext.delete(taskM)
-        try! self.managedObjectContext.save()
+        managedObjectContext.delete(taskM)
+        try! managedObjectContext.save()
     }
     
     
     func objectAtIndex(at indexPath: IndexPath) -> TaskM {
-        return self.fetchedResultController.object(at: indexPath)
+        return fetchedResultController.object(at: indexPath)
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         if type == .insert {
-            self.delegate.taskMDataProviderDidInsert(indexPath: newIndexPath!)
+            delegate.taskMDataProviderDidInsert(indexPath: newIndexPath!)
         } else if type == .delete {
-            self.delegate.taskMDataProviderDidDelete(indexPath: indexPath!)
+            delegate.taskMDataProviderDidDelete(indexPath: indexPath!)
         }
     }
+    
+    func add(taskToAdd: TaskM){
+        managedObjectContext.setValue(taskToAdd.name, forKey: "name")
+        managedObjectContext.setValue(taskToAdd.statusChecked, forKey: "statusChecked")
+        managedObjectContext.setValue(taskToAdd.taskId, forKey: "taskId")
+        
+//        try! managedObjectContext.save()
+        do{
+            try managedObjectContext.save()
+        } catch let error as NSError {
+            print ("Nemere! Could not save. \(error)")
+        }
+    }
+    
+    
     
 }

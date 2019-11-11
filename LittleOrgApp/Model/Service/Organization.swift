@@ -11,9 +11,7 @@ import Foundation
 class Organization: TaskMDataProviderDelegate {
 
     
-
-    private let dataProvider = TaskMDataProvider()
-    
+    private var dataProvider = TaskMDataProvider()
     var tasksList: [TaskM] {
         get {
             return dataProvider.tasks
@@ -24,17 +22,25 @@ class Organization: TaskMDataProviderDelegate {
     
     func addTask(name: String) {
         taskIdCounter += 1
-        let task = Task(name: name, taskIdCounter: taskIdCounter)
-
-        //dataProvider.add
-              
+        
+        let task = TaskM()
+    
+            
+        task.name = name
+        task.statusChecked = false
+        task.taskId = Int32(taskIdCounter)
+        
+        dataProvider.add(taskToAdd: task)
+        
+        //let task = TaskM.entyty(name: name, taskIdCounter: taskIdCounter)
+        
         //debug
         print("taskId from Organization =  \(taskIdCounter)")
-        print("task name from Organization =  \(task.name)")
+        //print("task name from Organization =  \(task.name)")
     
     }
     
-    func getTask(withID id: Int) -> Task? {
+    func getTask(withID id: Int) -> Int? {
         //return tasksListM.first(where: { $0.taskId == id})
         
 //        for posibleTask in tasksList {
@@ -47,19 +53,20 @@ class Organization: TaskMDataProviderDelegate {
     }
     
     func setStatusChecked(to status: Bool, forID id: Int) -> Bool {
-        guard let task = getTask(withID: id) else { return false }
+//        guard let task = getTask(withID: id) else { return false }
         
-        task.statusChecked = status
+//        task.statusChecked = status
         
         return true
     }
     
     // Returns a new status checked value.
     func toggleStatusChecked(forID id: Int) -> Bool {
-        let task = getTask(withID: id)!
-        task.statusChecked.toggle()
-        
-        return task.statusChecked
+//        let task = getTask(withID: id)!
+//        task.statusChecked.toggle()
+//
+//        return task.statusChecked
+        return true
     }
     
     func removeTaskFromList(index: Int) {
