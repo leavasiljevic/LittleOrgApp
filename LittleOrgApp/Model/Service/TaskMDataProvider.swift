@@ -53,12 +53,6 @@ class TaskMDataProvider : NSObject, NSFetchedResultsControllerDelegate {
         }
     }
     
-    func delete(taskM: TaskM) {
-        managedObjectContext.delete(taskM)
-        try! managedObjectContext.save()
-    }
-    
-    
     func objectAtIndex(at indexPath: IndexPath) -> TaskM {
         return fetchedResultController.object(at: indexPath)
     }
@@ -71,18 +65,34 @@ class TaskMDataProvider : NSObject, NSFetchedResultsControllerDelegate {
         }
     }
     
-//    func add(taskToAdd: TaskM){
-//        managedObjectContext.setValue(taskToAdd.name, forKey: "name")
-//        managedObjectContext.setValue(taskToAdd.statusChecked, forKey: "statusChecked")
-//        managedObjectContext.setValue(taskToAdd.taskId, forKey: "taskId")
-//
-//        try! managedObjectContext.save()
-//        do{
-//            try managedObjectContext.save()
-//        } catch let error as NSError {
-//            print ("Nemere! Could not save. \(error)")
-//        }
-//    }
+    func add(name: String, taskId: Int){
+        let taskM = NSEntityDescription.insertNewObject(forEntityName: "TaskM", into: self.managedObjectContext) as! TaskM
+        taskM.name = name
+        taskM.statusChecked = false
+        taskM.taskId = Int32(taskId)
+
+        self.addToDB(taskToAdd: taskM)
+    }
+    
+    
+    func addToDB(taskToAdd: TaskM) {
+        managedObjectContext.insert(taskToAdd)
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError {
+            print ("Nemere! Could not save. \(error)")
+        }
+    }
+    
+    func removeTask(at: IndexPath) {
+        let taskM = self.objectAtIndex(at: at)
+        self.deleteFromDB(taskM: taskM)
+    }
+    
+    func deleteFromDB(taskM: TaskM) {
+        managedObjectContext.delete(taskM)
+        try! managedObjectContext.save()
+    }
     
     
 }

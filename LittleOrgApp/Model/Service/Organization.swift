@@ -22,15 +22,7 @@ class Organization: TaskMDataProviderDelegate {
     
     func addTask(name: String) {
         taskIdCounter += 1
-        let task = TaskM()
-        task.name = name
-        task.statusChecked = false
-        task.taskId = Int32(taskIdCounter)
-        dataProvider.add(taskToAdd: task)
-//        let task = TaskM.entyty(name: name, taskIdCounter: taskIdCounter)
-        //debug
-        print("taskId from Organization =  \(taskIdCounter)")
-        print("task name from Organization =  \(task.name)")
+        dataProvider.add(name: name, taskId: taskIdCounter)
     }
     
     func getTask(withID id: Int) -> TaskM? {
@@ -59,19 +51,19 @@ class Organization: TaskMDataProviderDelegate {
         task.statusChecked.toggle()
 
         return task.statusChecked
-        return true
+
     }
     
-    func removeTaskFromList(index: Int) {
-        tasksList.remove(at: index)
+    func removeTaskFromList(indexPath: IndexPath) {
+        dataProvider.removeTask(at: indexPath)
     }
     
     func taskMDataProviderDidInsert(indexPath: IndexPath) {
-        
+        //dataProvider
     }
     
     func taskMDataProviderDidDelete(indexPath: IndexPath) {
-        
+        //dataProvider.delete(taskM: <#T##TaskM#>)
     }
     
         
