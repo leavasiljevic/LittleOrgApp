@@ -22,32 +22,25 @@ class Organization: TaskMDataProviderDelegate {
     
     func addTask(name: String) {
         taskIdCounter += 1
-        
         let task = TaskM()
-    
-            
         task.name = name
         task.statusChecked = false
         task.taskId = Int32(taskIdCounter)
-        
         dataProvider.add(taskToAdd: task)
-        
 //        let task = TaskM.entyty(name: name, taskIdCounter: taskIdCounter)
-        
         //debug
         print("taskId from Organization =  \(taskIdCounter)")
         print("task name from Organization =  \(task.name)")
-    
     }
     
-    func getTask(withID id: Int) -> Int? {
-        //return tasksListM.first(where: { $0.taskId == id})
+    func getTask(withID id: Int) -> TaskM? {
+        // return tasksListM.first(where: { $0.taskId == id})
         
-//        for posibleTask in tasksList {
-//            if posibleTask.taskId == id {
-//                return posibleTask
-//            }
-//        }
+        for posibleTask in tasksList {
+            if posibleTask.taskId == id {
+                return posibleTask
+            }
+        }
         
         return nil
     }
@@ -62,16 +55,15 @@ class Organization: TaskMDataProviderDelegate {
     
     // Returns a new status checked value.
     func toggleStatusChecked(forID id: Int) -> Bool {
-//        let task = getTask(withID: id)!
-//        task.statusChecked.toggle()
-//
-//        return task.statusChecked
+        let task = getTask(withID: id)!
+        task.statusChecked.toggle()
+
+        return task.statusChecked
         return true
     }
     
     func removeTaskFromList(index: Int) {
-       // tasksList.remove(at: index)
-        
+        tasksList.remove(at: index)
     }
     
     func taskMDataProviderDidInsert(indexPath: IndexPath) {

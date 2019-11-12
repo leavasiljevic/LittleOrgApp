@@ -54,7 +54,6 @@ class TaskMDataProvider : NSObject, NSFetchedResultsControllerDelegate {
     }
     
     func delete(taskM: TaskM) {
-        
         managedObjectContext.delete(taskM)
         try! managedObjectContext.save()
     }
