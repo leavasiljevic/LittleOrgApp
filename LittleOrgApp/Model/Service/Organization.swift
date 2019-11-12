@@ -32,11 +32,11 @@ class Organization: TaskMDataProviderDelegate {
         
         dataProvider.add(taskToAdd: task)
         
-        //let task = TaskM.entyty(name: name, taskIdCounter: taskIdCounter)
+//        let task = TaskM.entyty(name: name, taskIdCounter: taskIdCounter)
         
         //debug
         print("taskId from Organization =  \(taskIdCounter)")
-        //print("task name from Organization =  \(task.name)")
+        print("task name from Organization =  \(task.name)")
     
     }
     

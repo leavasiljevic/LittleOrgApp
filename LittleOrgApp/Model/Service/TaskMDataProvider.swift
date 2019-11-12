@@ -54,6 +54,7 @@ class TaskMDataProvider : NSObject, NSFetchedResultsControllerDelegate {
     }
     
     func delete(taskM: TaskM) {
+        
         managedObjectContext.delete(taskM)
         try! managedObjectContext.save()
     }
@@ -71,19 +72,18 @@ class TaskMDataProvider : NSObject, NSFetchedResultsControllerDelegate {
         }
     }
     
-    func add(taskToAdd: TaskM){
-        managedObjectContext.setValue(taskToAdd.name, forKey: "name")
-        managedObjectContext.setValue(taskToAdd.statusChecked, forKey: "statusChecked")
-        managedObjectContext.setValue(taskToAdd.taskId, forKey: "taskId")
-        
+//    func add(taskToAdd: TaskM){
+//        managedObjectContext.setValue(taskToAdd.name, forKey: "name")
+//        managedObjectContext.setValue(taskToAdd.statusChecked, forKey: "statusChecked")
+//        managedObjectContext.setValue(taskToAdd.taskId, forKey: "taskId")
+//
 //        try! managedObjectContext.save()
-        do{
-            try managedObjectContext.save()
-        } catch let error as NSError {
-            print ("Nemere! Could not save. \(error)")
-        }
-    }
-    
+//        do{
+//            try managedObjectContext.save()
+//        } catch let error as NSError {
+//            print ("Nemere! Could not save. \(error)")
+//        }
+//    }
     
     
 }
