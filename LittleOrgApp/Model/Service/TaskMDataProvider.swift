@@ -18,12 +18,13 @@ protocol TaskMDataProviderDelegate: class {
 
 class TaskMDataProvider : NSObject, NSFetchedResultsControllerDelegate {
     
-    weak var delegate: TaskMDataProviderDelegate!
+    weak var delegate: TaskMDataProviderDelegate?
     var managedObjectContext: NSManagedObjectContext!
     var fetchedResultController: NSFetchedResultsController<TaskM>!
     
 
-    init(managedObjectContext: NSManagedObjectContext? = nil) {
+    init(managedObjectContext: NSManagedObjectContext? = nil, delegate: TaskMDataProviderDelegate? = nil) {
+        self.delegate = delegate
         
         if let context = managedObjectContext {
             self.managedObjectContext = context
@@ -59,9 +60,9 @@ class TaskMDataProvider : NSObject, NSFetchedResultsControllerDelegate {
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         if type == .insert {
-            delegate.taskMDataProviderDidInsert(indexPath: newIndexPath!)
+            delegate?.taskMDataProviderDidInsert(indexPath: newIndexPath!)
         } else if type == .delete {
-            delegate.taskMDataProviderDidDelete(indexPath: indexPath!)
+            delegate?.taskMDataProviderDidDelete(indexPath: indexPath!)
         }
     }
     
@@ -71,12 +72,11 @@ class TaskMDataProvider : NSObject, NSFetchedResultsControllerDelegate {
         taskM.statusChecked = false
         taskM.taskId = Int32(taskId)
 
-        self.addToDB(taskToAdd: taskM)
+        save()
     }
     
     
-    func addToDB(taskToAdd: TaskM) {
-        managedObjectContext.insert(taskToAdd)
+    private func save() {
         do {
             try managedObjectContext.save()
         } catch let error as NSError {

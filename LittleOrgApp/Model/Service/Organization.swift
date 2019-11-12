@@ -10,8 +10,10 @@ import Foundation
 
 class Organization: TaskMDataProviderDelegate {
 
+    private(set) lazy var dataProvider: TaskMDataProvider = {
+        return TaskMDataProvider(delegate: self)
+    }()
     
-    private var dataProvider = TaskMDataProvider()
     var tasksList: [TaskM] {
         get {
             return dataProvider.tasks
@@ -59,6 +61,7 @@ class Organization: TaskMDataProviderDelegate {
     }
     
     func taskMDataProviderDidInsert(indexPath: IndexPath) {
+        print("Called")
         //dataProvider
     }
     
