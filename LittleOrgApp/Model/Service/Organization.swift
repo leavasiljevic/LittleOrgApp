@@ -9,6 +9,10 @@
 import Foundation
 
 class Organization: TaskMDataProviderDelegate {
+    
+    private enum Const {
+        static let taskIDUserDefaultsKey = "taskID"
+    }
 
     private(set) lazy var dataProvider: TaskMDataProvider = {
         return TaskMDataProvider(delegate: self)
@@ -19,49 +23,34 @@ class Organization: TaskMDataProviderDelegate {
             return dataProvider.tasks
         }
     }
-    private var taskIdCounter = 0
     
-    
-    func addTask(name: String) {
-        taskIdCounter += 1
-        dataProvider.add(name: name, taskId: taskIdCounter)
-        
-    }
-    
-    func getTask(withID id: Int32) -> TaskM? {
-        // return tasksListM.first(where: { $0.taskId == id})
-        
-        for posibleTask in tasksList {
-            if posibleTask.taskId == id {
-                return posibleTask
+    private var taskIdCounter: Int {
+        get {
+            if let savedID = UserDefaults.standard.object(forKey: Const.taskIDUserDefaultsKey) as? NSNumber {
+                return savedID.intValue
             }
+            
+            let savedID = 0
+            UserDefaults.standard.set(savedID, forKey: Const.taskIDUserDefaultsKey)
+            return savedID
         }
         
-        return nil
+        set {
+            UserDefaults.standard.set(newValue, forKey: Const.taskIDUserDefaultsKey)
+        }
     }
     
-    func setStatusChecked(to status: Bool, forID id: Int32) -> Bool {
-        guard let task = getTask(withID: id) else { return false }
-        
-        task.statusChecked = status
-        
-        return true
-    }
-    
-    // Returns a new status checked value.
-    func toggleStatusChecked(forID id: Int32) -> Bool {
-        let task = getTask(withID: id)!
-        task.statusChecked.toggle()
-
-        return task.statusChecked
-
+    func addTask(name: String) {
+        taskIdCounter = taskIdCounter + 1
+        dataProvider.addTask(name: name, taskId: taskIdCounter)
     }
     
     func removeTaskFromList(indexPath: IndexPath) {
         dataProvider.removeTask(at: indexPath)
     }
     
-    func taskMDataProviderDidInsert(indexPath: IndexPath) {
+    func taskMDataProviderDidInsert
+        (indexPath: IndexPath) {
         print("Called taskMDataProviderDid Insert")
         //dataProvider.add(name: <#T##String#>, taskId: indexPath.row)
     }
@@ -71,6 +60,33 @@ class Organization: TaskMDataProviderDelegate {
          //dataProvider.removeTask(at: indexPath)
     }
     
+    
+    func getTask(withID id: Int32) -> TaskM? {
+        // return tasksListM.first(where: { $0.taskId == id})
+        for posibleTask in tasksList {
+            if posibleTask.taskId == id {
+                return posibleTask
+            }
+        }
+        
+        return nil
+    }
+    
+//    func setStatusChecked(to status: Bool, forID id: Int32) -> Bool {
+//        guard let task = getTask(withID: id) else { return false }
+//
+//        task.statusChecked = status
+//
+//        return true
+//    }
+    
+    // Returns a new status checked value.
+    func toggleStatusChecked(forID id: Int32) -> Bool {
+        let task = getTask(withID: id)!
+        task.statusChecked.toggle()
+
+        return task.statusChecked
+    }
         
     init() { }
 }

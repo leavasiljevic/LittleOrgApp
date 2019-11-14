@@ -66,7 +66,7 @@ class TaskMDataProvider : NSObject, NSFetchedResultsControllerDelegate {
         }
     }
     
-    func add(name: String, taskId: Int){
+    func addTask(name: String, taskId: Int){
         let taskM = NSEntityDescription.insertNewObject(forEntityName: "TaskM", into: self.managedObjectContext) as! TaskM
         taskM.name = name
         taskM.statusChecked = false
