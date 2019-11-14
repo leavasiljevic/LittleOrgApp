@@ -25,6 +25,7 @@ class Organization: TaskMDataProviderDelegate {
     func addTask(name: String) {
         taskIdCounter += 1
         dataProvider.add(name: name, taskId: taskIdCounter)
+        
     }
     
     func getTask(withID id: Int) -> TaskM? {
@@ -62,7 +63,7 @@ class Organization: TaskMDataProviderDelegate {
     
     func taskMDataProviderDidInsert(indexPath: IndexPath) {
         print("Called")
-        //dataProvider
+        dataProvider.add(name: <#T##String#>, taskId: indexPath.row)
     }
     
     func taskMDataProviderDidDelete(indexPath: IndexPath) {
