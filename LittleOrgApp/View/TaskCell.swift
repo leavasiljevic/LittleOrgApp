@@ -47,7 +47,7 @@ class TaskCell: UITableViewCell {
         }
     }
     
-    var taskId: Int?
+    var taskId: Int32?
     
     override func awakeFromNib() {
         super.awakeFromNib()

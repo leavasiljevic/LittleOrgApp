@@ -23,8 +23,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as! TaskCell
         
-        //cell.taskId = org.tasksList[indexPath.row].taskId
-        //cell.taskName = org.tasksList[indexPath.row].name
+        cell.taskId = org.tasksList[indexPath.row].taskId
+        cell.taskName = org.tasksList[indexPath.row].name ?? ""
         cell.statusChecked = org.tasksList[indexPath.row].statusChecked
         cell.delegate = self
 
@@ -39,6 +39,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if editingStyle == .delete {
             
             org.removeTaskFromList(indexPath: indexPath)
+            //org.taskMDataProviderDidDelete(indexPath: indexPath)
             
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .left)
@@ -54,9 +55,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        org.addTask(name: "Test object 1" )
-        org.addTask(name: "Test object 2" )
-        org.addTask(name: "Test object 3" )
+//        org.addTask(name: "Test object 1" )
+//        org.addTask(name: "Test object 2" )
+//        org.addTask(name: "Test object 3" )
         
     }
 

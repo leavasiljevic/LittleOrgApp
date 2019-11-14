@@ -28,7 +28,7 @@ class Organization: TaskMDataProviderDelegate {
         
     }
     
-    func getTask(withID id: Int) -> TaskM? {
+    func getTask(withID id: Int32) -> TaskM? {
         // return tasksListM.first(where: { $0.taskId == id})
         
         for posibleTask in tasksList {
@@ -40,16 +40,16 @@ class Organization: TaskMDataProviderDelegate {
         return nil
     }
     
-    func setStatusChecked(to status: Bool, forID id: Int) -> Bool {
-//        guard let task = getTask(withID: id) else { return false }
+    func setStatusChecked(to status: Bool, forID id: Int32) -> Bool {
+        guard let task = getTask(withID: id) else { return false }
         
-//        task.statusChecked = status
+        task.statusChecked = status
         
         return true
     }
     
     // Returns a new status checked value.
-    func toggleStatusChecked(forID id: Int) -> Bool {
+    func toggleStatusChecked(forID id: Int32) -> Bool {
         let task = getTask(withID: id)!
         task.statusChecked.toggle()
 
@@ -62,12 +62,13 @@ class Organization: TaskMDataProviderDelegate {
     }
     
     func taskMDataProviderDidInsert(indexPath: IndexPath) {
-        print("Called")
-        dataProvider.add(name: <#T##String#>, taskId: indexPath.row)
+        print("Called taskMDataProviderDid Insert")
+        //dataProvider.add(name: <#T##String#>, taskId: indexPath.row)
     }
     
     func taskMDataProviderDidDelete(indexPath: IndexPath) {
-        //dataProvider.delete(taskM: <#T##TaskM#>)
+        
+         //dataProvider.removeTask(at: indexPath)
     }
     
         
