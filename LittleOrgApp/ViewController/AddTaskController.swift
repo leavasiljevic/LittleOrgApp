@@ -13,7 +13,8 @@ protocol AddTaskDelegate : class {
     func addTaskControllerDidAddTask(with name: String) // addTaskControllerDidAddTask(with:"Pick up Milk")
 }
 
-class AddTaskController: UIViewController {
+class AddTaskController: UIViewController,
+UITextFieldDelegate  {
 
     @IBAction func addAction(_ sender: Any) {
         if taskNameOutlet.text != ""{
@@ -22,15 +23,24 @@ class AddTaskController: UIViewController {
         }
     }
     
+   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if taskNameOutlet.text != ""{
+            delegate?.addTaskControllerDidAddTask(with: taskNameOutlet.text!)
+            navigationController?.popViewController(animated: true)
+        }
+    
+        self.view.endEditing(true)
+        return false
+    }
     
     @IBOutlet weak var taskNameOutlet: UITextField!
-    
-    
     
     weak var delegate: AddTaskDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       self.taskNameOutlet.delegate = self
     }
 }
 

@@ -72,11 +72,11 @@ class TaskMDataProvider : NSObject, NSFetchedResultsControllerDelegate {
         taskM.statusChecked = false
         taskM.taskId = Int32(taskId)
 
-        save()
+        saveChangeInDB()
     }
     
     
-    private func save() {
+    func saveChangeInDB() {
         do {
             try managedObjectContext.save()
         } catch let error as NSError {
@@ -91,7 +91,8 @@ class TaskMDataProvider : NSObject, NSFetchedResultsControllerDelegate {
     
     func deleteFromDB(taskM: TaskM) {
         managedObjectContext.delete(taskM)
-        try! managedObjectContext.save()
+        saveChangeInDB()
+        //try! managedObjectContext.save()
     }
     
     

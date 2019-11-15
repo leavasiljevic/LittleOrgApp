@@ -49,12 +49,11 @@ class Organization: TaskMDataProviderDelegate {
         dataProvider.removeTask(at: indexPath)
     }
     
-    func taskMDataProviderDidInsert
-        (indexPath: IndexPath) {
-        print("Called taskMDataProviderDid Insert")
-        //dataProvider.add(name: <#T##String#>, taskId: indexPath.row)
+    func taskMDataProviderDidInsert(indexPath: IndexPath) {
+//        print("Called taskMDataProviderDidInsert")
+//        //dataProvider.add(name: <#T##String#>, taskId: indexPath.row)
     }
-    
+//
     func taskMDataProviderDidDelete(indexPath: IndexPath) {
         
          //dataProvider.removeTask(at: indexPath)
@@ -76,7 +75,7 @@ class Organization: TaskMDataProviderDelegate {
     func toggleStatusChecked(forID id: Int32) -> Bool {
         let task = getTask(withID: id)!
         task.statusChecked.toggle()
-
+        dataProvider.saveChangeInDB()
         return task.statusChecked
     }
         

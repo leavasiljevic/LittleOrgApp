@@ -58,7 +58,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        org.addTask(name: "Test object 1" )
 //        org.addTask(name: "Test object 2" )
 //        org.addTask(name: "Test object 3" )
-        
+//
     }
 
     func addTaskControllerDidAddTask(with name: String){
