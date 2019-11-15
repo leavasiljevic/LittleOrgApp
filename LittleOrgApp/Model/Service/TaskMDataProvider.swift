@@ -92,8 +92,6 @@ class TaskMDataProvider : NSObject, NSFetchedResultsControllerDelegate {
     func deleteFromDB(taskM: TaskM) {
         managedObjectContext.delete(taskM)
         saveChangeInDB()
-        //try! managedObjectContext.save()
     }
-    
     
 }

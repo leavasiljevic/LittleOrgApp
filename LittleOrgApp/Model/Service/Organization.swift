@@ -50,13 +50,10 @@ class Organization: TaskMDataProviderDelegate {
     }
     
     func taskMDataProviderDidInsert(indexPath: IndexPath) {
-//        print("Called taskMDataProviderDidInsert")
-//        //dataProvider.add(name: <#T##String#>, taskId: indexPath.row)
+        print("Called taskMDataProviderDidInsert")
     }
-//
+
     func taskMDataProviderDidDelete(indexPath: IndexPath) {
-        
-         //dataProvider.removeTask(at: indexPath)
     }
     
     

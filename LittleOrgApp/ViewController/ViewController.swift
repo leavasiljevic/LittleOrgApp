@@ -38,8 +38,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            org.removeTaskFromList(indexPath: indexPath)
-            //org.taskMDataProviderDidDelete(indexPath: indexPath)
+            org.removeTaskFromList(indexPath: indexPath)            
             
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .left)
