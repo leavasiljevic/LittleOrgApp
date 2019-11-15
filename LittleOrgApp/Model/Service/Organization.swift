@@ -72,14 +72,6 @@ class Organization: TaskMDataProviderDelegate {
         return nil
     }
     
-//    func setStatusChecked(to status: Bool, forID id: Int32) -> Bool {
-//        guard let task = getTask(withID: id) else { return false }
-//
-//        task.statusChecked = status
-//
-//        return true
-//    }
-    
     // Returns a new status checked value.
     func toggleStatusChecked(forID id: Int32) -> Bool {
         let task = getTask(withID: id)!

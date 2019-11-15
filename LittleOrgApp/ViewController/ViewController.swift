@@ -61,16 +61,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
 
-    func addTaskButton(name: String) {
+    func addTaskControllerDidAddTask(with name: String){
         org.addTask(name: name)
         tableView.reloadData()
     }
-    
-    func addTaskReturn(name: String) {
-        org.addTask(name: name)
-        tableView.reloadData()
-    }
-    
     
     func checkBoxTapped(for taskCell: TaskCell) {
         taskCell.statusChecked = org.toggleStatusChecked(forID: taskCell.taskId!)

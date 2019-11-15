@@ -84,8 +84,8 @@ class TaskMDataProvider : NSObject, NSFetchedResultsControllerDelegate {
         }
     }
     
-    func removeTask(at: IndexPath) {
-        let taskM = self.objectAtIndex(at: at)
+    func removeTask(at indexPath: IndexPath) {
+        let taskM = self.objectAtIndex(at: indexPath)
         self.deleteFromDB(taskM: taskM)
     }
     

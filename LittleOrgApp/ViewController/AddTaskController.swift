@@ -8,16 +8,16 @@
 
 import UIKit
 
-protocol AddTaskDelegate{
-    func addTaskButton(name: String)
-    func addTaskReturn(name: String)
+protocol AddTaskDelegate : class {
+    //func addTaskButton(name: String)
+    func addTaskControllerDidAddTask(with name: String) // addTaskControllerDidAddTask(with:"Pick up Milk")
 }
 
 class AddTaskController: UIViewController {
 
     @IBAction func addAction(_ sender: Any) {
         if taskNameOutlet.text != ""{
-            delegate?.addTaskButton(name: taskNameOutlet.text!)
+            delegate?.addTaskControllerDidAddTask(with: taskNameOutlet.text!)
             navigationController?.popViewController(animated: true)
         }
     }
@@ -27,7 +27,7 @@ class AddTaskController: UIViewController {
     
     
     
-    var delegate: AddTaskDelegate?
+    weak var delegate: AddTaskDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
